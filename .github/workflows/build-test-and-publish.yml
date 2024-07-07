@@ -5,9 +5,15 @@
 name: Build Test and Pack
 
 on:
-  pull_request:
-    branches: 
-        - main
+  push:
+    branches:
+      - main
+      - next
+
+permissions: 
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
   BuildAndTest:
@@ -27,7 +33,7 @@ jobs:
       # - name: Run Tests
       #   run: npm test
 
-  Pack:
+  Publish:
     needs: BuildAndTest
     runs-on: ubuntu-latest
     permissions:
@@ -39,27 +45,18 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: latest
           registry-url: https://npm.pkg.github.com/
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v1.1.1
-        with:
-            versionSpec: '5.x'
-      - name: Run GitVersion
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v1.1.1
       - name: Install Dependencies
         run: npm ci
-      - name: Configure npm credentials
-        run: |
-          echo @peteatkinson:https://npm.pkg.github.com/ > ./.npmrc 
-          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> ./.npmrc
-      - name: Setup Version
-        run: npm version ${{ steps.gitversion.outputs.SemVer }} --force
-      - name: Publish NPM Package
-        run: npm publish
-        working-directory: ./
+      - name: Audit Signatures
+        run: npm audit signatures
+      - name: Build
+        run: npm build
+      - name: Release
         env:
           NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}#
+        run: npx semantic-release
