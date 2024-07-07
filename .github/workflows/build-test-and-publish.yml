@@ -5,10 +5,10 @@
 name: Build Test and Pack
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-      - feature/ci
+      - next
 
 permissions: 
   contents: write
