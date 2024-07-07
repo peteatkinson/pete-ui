@@ -14,7 +14,7 @@ export default defineConfig({
     copyPublicDir: false,
     lib: {
       entry: path.resolve(__dirname, "lib/index.ts"),
-      name: "@rwxpeter/ui",
+      name: "@peteatkinson/pete-ui",
       fileName: (format: string) => `index.${format}.js`,
     },
     rollupOptions: {
