@@ -57,7 +57,7 @@ jobs:
           echo @peteatkinson:https://npm.pkg.github.com/ > ./.npmrc 
           echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> ./.npmrc
       - name: Setup Version
-        run: npm version ${{ steps.gitversion.outputs.SemVer }}
+        run: npm version ${{ steps.gitversion.outputs.SemVer }} --force
       - name: Publish NPM Package
         run: npm publish
         working-directory: ./
