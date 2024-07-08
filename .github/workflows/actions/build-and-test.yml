@@ -4,12 +4,6 @@ description: "Builds the application and runs the unit tests"
 runs:
   using: "composite"
   steps:
-    - name: Checkout Code 
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ github.head_ref }}
-        fetch-depth: 0
-        persist-credentials: false
     - name: Setup Node with latest version
       uses: actions/setup-node@v4
       with:

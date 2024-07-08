@@ -9,5 +9,11 @@ jobs:
   Test: 
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code 
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          persist-credentials: false
       - name: Build and Test
         uses: ./.github/actions/build-and-test
