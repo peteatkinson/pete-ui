@@ -5,10 +5,7 @@
 name: Build Test and Pack
 
 on:
-  push:
-    branches:
-      - main
-      - next
+  workflow_dispatch:
 
 permissions: 
   contents: write
@@ -37,8 +34,9 @@ jobs:
     needs: BuildAndTest
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - name: Checkout Code 
         uses: actions/checkout@v4
@@ -56,8 +54,8 @@ jobs:
         run: npm audit signatures
       - name: Build
         run: npm run build
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{secrets.DEPLOY_TOKEN}}
-          NPM_TOKEN: ${{secrets.DEPLOY_TOKEN}}          
+      - name: Release    
         run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}      
