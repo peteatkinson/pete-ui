@@ -1,0 +1,1 @@
+{"version":3,"file":"index.umd.js","sources":["../lib/Button/Button.tsx"],"sourcesContent":["export const Button = () => {\n  return <button>Vite is test so cool!</button>;\n};\n"],"names":["Button","jsx"],"mappings":"0TAAa,MAAAA,EAAS,IACbC,EAAA,IAAC,UAAO,SAAqB,uBAAA,CAAA"}

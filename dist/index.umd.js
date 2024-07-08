@@ -1,0 +1,2 @@
+(function(e,t){typeof exports=="object"&&typeof module<"u"?t(exports,require("react/jsx-runtime")):typeof define=="function"&&define.amd?define(["exports","react/jsx-runtime"],t):(e=typeof globalThis<"u"?globalThis:e||self,t(e["@peteatkinson/pete-ui"]={},e["react-jsx-runtime"]))})(this,function(e,t){"use strict";const n=()=>t.jsx("button",{children:"Vite is test so cool!"});e.Button=n,Object.defineProperty(e,Symbol.toStringTag,{value:"Module"})});
+//# sourceMappingURL=index.umd.js.map

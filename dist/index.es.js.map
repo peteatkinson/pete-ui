@@ -1,0 +1,1 @@
+{"version":3,"file":"index.es.js","sources":["../lib/Button/Button.tsx"],"sourcesContent":["export const Button = () => {\n  return <button>Vite is test so cool!</button>;\n};\n"],"names":["Button","jsx"],"mappings":";AAAO,MAAMA,IAAS,MACb,gBAAAC,EAAC,YAAO,UAAqB,wBAAA,CAAA;"}
