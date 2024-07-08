@@ -10,10 +10,13 @@ runs:
         node-version: latest
         registry-url: https://npm.pkg.github.com/
     - name: Install Dependencies
+      shell: bash
       run: npm ci
     - name: Audit Signatures
+      shell: bash
       run: npm audit signatures
     - name: Build
+      shell: bash
       run: npm run build
 
       # - name: Run Tests
