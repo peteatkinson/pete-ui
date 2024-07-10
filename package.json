@@ -19,7 +19,7 @@
     "url": "git+https://github.com/peteatkinson/pete-ui.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
+    "registry": "https://npm.pkg.github.com/@petatkinson",
     "tag": "latest"
   },
   "bugs": {
