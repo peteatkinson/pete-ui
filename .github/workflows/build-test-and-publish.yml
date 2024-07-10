@@ -57,7 +57,7 @@ jobs:
         run: npm audit signatures
       - name: Build
         run: npm run build
-      - run: echo "@peteatkinson:registry=https://npm.pk.github.com" >> ~/.npm.rc
+      - run: echo "@peteatkinson:registry=https://npm.pkg.github.com" >> ~/.npm.rc
       - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - run: cat ~./npmrc
       - name: Release    
