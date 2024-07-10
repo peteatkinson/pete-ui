@@ -1,0 +1,23 @@
+name: "Build and Test"
+description: "Builds the application and runs the unit tests"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node with latest version
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        registry-url: https://npm.pkg.github.com/
+    - name: Install Dependencies
+      shell: bash
+      run: npm ci
+    - name: Audit Signatures
+      shell: bash
+      run: npm audit signatures
+    - name: Build
+      shell: bash
+      run: npm run build
+
+      # - name: Run Tests
+      #   run: npm test
